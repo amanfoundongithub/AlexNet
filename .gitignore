@@ -1,0 +1,7 @@
+# Ignore pycache
+__pycache__/
+
+# Ignore data directory
+data/
+
+alex_net_cifar100.pt
