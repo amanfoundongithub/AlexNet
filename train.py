@@ -13,17 +13,18 @@ train_dataloader, valid_dataloader = get_cifar100_train(
 )
 
 
-alex_net = AlexNet(num_classes = 100, dropout = 0.2)
+alex_net = AlexNet(num_classes = 100, dropout = 0.5)
 alex_net = alex_net.to(device) 
 
-EPOCHS = 20
+EPOCHS = 120
 
 optimizer = torch.optim.SGD(
     alex_net.parameters(),
-    lr=0.005,       
+    lr=0.01,       
     momentum=0.9,   
     weight_decay=5e-4  
 )
+scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, mode='min', factor=0.1, patience=5) 
 
 criterion = torch.nn.CrossEntropyLoss()
 
@@ -64,7 +65,7 @@ for ep in range(EPOCHS):
         total_train += tgt.size(0)
     
     train_accuracy = correct_train / total_train * 100
-    print(f"\nEPOCH #{ep + 1} SUMMARY :\n\tAvg training loss : {total_train_loss/count}\n\tTraining accuracy : {round(train_accuracy, 2)} %")
+    print(f"\nEPOCH #{ep + 1} SUMMARY :\n\tLearning Rate : {scheduler.get_last_lr()[0]}\n\tAvg training loss : {total_train_loss/count}\n\tTraining accuracy : {round(train_accuracy, 2)} %")
     
     alex_net.eval()
     
@@ -89,8 +90,12 @@ for ep in range(EPOCHS):
             count_valid += tgt.size(0)
     
     avg_valid_loss = total_valid_loss / len(valid_dataloader)
+    
+    
     valid_accuracy = correct_valid / count_valid * 100
     print(f"\n\tAvg validation loss : {avg_valid_loss}\n\tValidation accuracy : {round(valid_accuracy, 2)} %")
+    
+    scheduler.step(avg_valid_loss) 
         
         
         

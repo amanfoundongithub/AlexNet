@@ -55,8 +55,6 @@ def get_cifar100_test(batch_size = 10):
     
     # Define a transformation
     transform =  transforms.Compose([
-        transforms.RandomHorizontalFlip(),
-        transforms.RandomCrop(32, padding = 4),
         transforms.ToTensor(),
         transforms.Normalize(
             mean = (0.5071, 0.4867, 0.4408),

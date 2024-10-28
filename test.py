@@ -12,7 +12,7 @@ dataloader = get_cifar100_test(
 )
 
 
-alex_net = AlexNet(num_classes = 100, dropout = 0.2)
+alex_net = AlexNet(num_classes = 100, dropout = 0.5)
 alex_net.load("alex_net_cifar100.pt")
 alex_net = alex_net.to(device) 
 
