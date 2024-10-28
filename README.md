@@ -13,3 +13,5 @@ Trained an AlexNet on CIFAR-100 dataset.
 
         after 20 epochs 
 
+
+Pre trained model could be downloaded from [here](https://iiitaphyd-my.sharepoint.com/:f:/g/personal/aman_r_students_iiit_ac_in/Em3zpNu9-EhHjorNt-bLNj0B61936YzO_O5UMfwum89MJw?e=Nevcwr) for Alex Net on CIFAR-100 dataset
