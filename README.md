@@ -7,7 +7,7 @@ The results are as follows for the fully trained model:
 ```
 Avg training loss : 0.522764069840312
 Training accuracy : 83.37 %
-                                                        Avg validation loss : 1.4082968754768372
+Avg validation loss : 1.4082968754768372
 Validation accuracy : 64.53 %
 ```
 
